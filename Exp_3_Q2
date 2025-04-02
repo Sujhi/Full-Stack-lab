@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:disabled {
+            background-color: gray;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Simple Form Validation</h2>
+    <form id="myForm">
+        <label for="userInput">Enter your name:</label>
+        <input type="text" id="userInput" name="userInput">
+        <small class="error" id="errorMessage"></small>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("myForm").onsubmit = function(event) {
+        let inputField = document.getElementById("userInput");
+        let errorMessage = document.getElementById("errorMessage");
+
+        // Trim input to remove spaces
+        let inputValue = inputField.value.trim();
+
+        if (inputValue === "") {
+            errorMessage.textContent = "Input cannot be empty!";
+            event.preventDefault(); // Prevent form submission
+        } else {
+            errorMessage.textContent = ""; // Clear error if input is valid
+            alert("Form submitted successfully!");
+        }
+    };
+</script>
+
+</body>
+</html>
